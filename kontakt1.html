@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <title>Kocia Łapka – Kontakt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background-color: rgb(218, 213, 169);
+            font-family: Georgia, serif;
+            color:#3b2a18;
+        }
+
+        /* Skip link – WCAG */
+        .skip-link{
+            position:absolute;
+            left:-9999px;
+            top:auto;
+            width:1px;
+            height:1px;
+            overflow:hidden;
+        }
+        .skip-link:focus{
+            position:static;
+            width:auto;
+            height:auto;
+            padding:8px 12px;
+            background:#ffd54f;
+            color:#000;
+            z-index:1000;
+        }
+
+        .topbar {
+    background-color: #4a371f;
+    color: rgb(218, 213, 169);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    position: relative;
+    z-index: 1000;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: none;
+            border: 2px solid rgb(218, 213, 169);
+            border-radius: 6px;
+            color: rgb(218, 213, 169);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding: 8px 0;
+            position: absolute;
+            right: 0;
+            top: 32px;
+            background-color: rgb(218, 213, 169);
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            min-width: 180px;
+            display: none;
+        }
+
+        .menu-list li a {
+            display: block;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .menu-list li a:hover {
+            background-color: #eee;
+        }
+
+        .menu-list--open {
+            display: block;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #ffd54f;
+            outline-offset: 3px;
+        }
+
+        main{
+            display:block;
+        }
+
+        /* KONTAKT – GÓRNA CZĘŚĆ */
+
+        .kontakt-hero{
+            position:relative;
+            padding:60px 120px 80px;
+            box-sizing:border-box;
+            overflow:hidden; /* żeby powiększone zdjęcie nie wychodziło poza ramkę */
+        }
+
+        .kontakt-tlo{
+            width:100%;
+            border-radius:0;
+            display:block;
+            max-height:520px;
+            object-fit:cover;
+            transform:scale(1);
+            transition:transform 0.6s ease;
+        }
+
+        /* powiększanie zdjęcia w tle po najechaniu */
+        .kontakt-hero:hover .kontakt-tlo{
+            transform:scale(1.03);
+        }
+
+        .kontakt-overlay{
+            position:absolute;
+            right:120px;
+            top:90px;
+            max-width:520px;
+        }
+
+        .kontakt-title{
+            font-size:48px;
+            color:#fdf5e6;
+            text-shadow:0 2px 4px rgba(0,0,0,0.6);
+            margin:0 0 30px 0;
+            text-align:left;
+        }
+
+        .kontakt-card{
+            background:rgba(218, 213, 169, 0.97);
+            border-radius:25px;
+            padding:18px 26px;
+            margin-bottom:18px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+            font-size:18px;
+            transform:scale(1);
+            transition:transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* powiększanie kart kontaktowych */
+        .kontakt-card:hover{
+            transform:scale(1.03);
+            box-shadow:0 6px 16px rgba(0,0,0,0.35);
+        }
+
+        .kontakt-label{
+            font-weight:bold;
+            color:#4a371f;
+        }
+
+        .kontakt-value{
+            font-size:16px;
+            color:#3b2a18;
+            text-align:right;
+        }
+
+        /* FORMULARZ */
+
+        .kontakt-form-wrapper{
+            padding:20px 120px 60px;
+            box-sizing:border-box;
+        }
+
+        .kontakt-form-title{
+            font-size:28px;
+            margin:0 0 20px 0;
+            color:#4a371f;
+        }
+
+        form{
+            max-width:520px;
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+        }
+
+        label{
+            font-size:16px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea{
+            padding:8px 10px;
+            border-radius:6px;
+            border:1px solid #7a684f;
+            font-family:inherit;
+            font-size:15px;
+        }
+
+        textarea{
+            min-height:90px;
+            resize:vertical;
+        }
+
+        .btn-wyslij{
+            align-self:flex-start;
+            margin-top:6px;
+            padding:8px 18px;
+            border-radius:20px;
+            border:none;
+            background-color:#4a371f;
+            color:rgb(218, 213, 169);
+            font-size:15px;
+            cursor:pointer;
+            transition:transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .btn-wyslij:hover{
+            filter:brightness(1.1);
+            transform:scale(1.03);
+        }
+
+        footer {
+            width:100%;
+            text-align:center;
+            padding:5px;
+            font-size:12px;
+            background-color: azure;
+            color:#4a371f;
+            opacity:0.6;
+        }
+
+        /* RESPONSYWNE */
+
+        @media (max-width: 1000px){
+            .kontakt-hero{
+                padding:40px 20px 40px;
+            }
+            .kontakt-tlo{
+                border-radius:10px;
+            }
+            .kontakt-overlay{
+                position:static;
+                margin-top:-120px;
+                max-width:none;
+            }
+            .kontakt-title{
+                color:#4a371f;
+                text-shadow:none;
+            }
+            .kontakt-form-wrapper{
+                padding:0 20px 40px;
+            }
+        }
+
+        @media (max-width: 600px){
+            .kontakt-card{
+                flex-direction:column;
+                align-items:flex-start;
+            }
+            .kontakt-value{
+                text-align:left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+<header class="topbar">
+    <div class="brand">Kocia Łapka</div>
+
+    <nav aria-label="Główna nawigacja">
+        <button class="menu-btn"
+                id="menuToggle"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="mainMenu">
+            MENU ▼
+        </button>
+
+        <ul class="menu-list" id="mainMenu">
+            <li><a href="main strona.html">Strona główna</a></li>
+            <li><a href="uslugi.html">Usługi</a></li>
+            <li><a href="opinie.html">Opinie</a></li>
+            <li><a href="kontakt1.html" aria-current="page">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main">
+
+    <section class="kontakt-hero" aria-labelledby="kontakt-heading">
+        <img class="kontakt-tlo"
+             src="IMG/Kocia Łapka_ Kafejka pełna kotów.png"
+             alt="Wnętrze księgarni Kocia Łapka z czytelnikami i kotami">
+
+        <div class="kontakt-overlay">
+            <h1 id="kontakt-heading" class="kontakt-title">Kontakt</h1>
+
+            <div class="kontakt-card">
+                <span class="kontakt-label">Telefon</span>
+                <span class="kontakt-value">123 456 789</span>
+            </div>
+
+            <div class="kontakt-card">
+                <span class="kontakt-label">E-mail</span>
+                <span class="kontakt-value">kocialapka@ksiegarnia.pl</span>
+            </div>
+
+            <div class="kontakt-card">
+                <span class="kontakt-label">Media społecznościowe</span>
+                <span class="kontakt-value">@kocia_lapka_ksiegarnia</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="kontakt-form-wrapper" aria-labelledby="kontakt-form-heading">
+        <h2 id="kontakt-form-heading" class="kontakt-form-title">Napisz do nas</h2>
+
+        <form>
+            <div>
+                <label for="imie">Imię i nazwisko</label><br>
+                <input type="text" id="imie" name="imie">
+            </div>
+
+            <div>
+                <label for="email">Adres e-mail</label><br>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div>
+                <label for="wiadomosc">Twoja wiadomość</label><br>
+                <textarea id="wiadomosc" name="wiadomosc"></textarea>
+            </div>
+
+            <button type="submit" class="btn-wyslij">Wyślij</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    illia novak
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('mainMenu');
+
+    // otwieranie / закрываение меню
+    menuBtn.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const isOpen = menu.classList.toggle('menu-list--open');
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // zamykanie po kliknięciu poza menu
+    document.addEventListener('click', function () {
+        if (menu.classList.contains('menu-list--open')) {
+            menu.classList.remove('menu-list--open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Escape zamyka menu
+    menu.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            menu.classList.remove('menu-list--open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.focus();
+        }
+    });
+</script>
+
+</body>
+</html>

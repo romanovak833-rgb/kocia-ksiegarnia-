@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <title>Kocia Łapka – Strona główna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(218, 213, 169);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #3b2a18;
+        }
+
+        .skip-link{
+            position:absolute;
+            left:-9999px;
+            top:auto;
+            width:1px;
+            height:1px;
+            overflow:hidden;
+        }
+        .skip-link:focus{
+            position:static;
+            width:auto;
+            height:auto;
+            padding:8px 12px;
+            background:#ffd54f;
+            color:#000;
+            z-index:1000;
+        }
+
+        .topbar {
+            background-color: #4a371f;
+            color: rgb(218, 213, 169);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 25px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: none;
+            border: 2px solid rgb(218, 213, 169);
+            border-radius: 6px;
+            color: rgb(218, 213, 169);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding: 8px 0;
+            position: absolute;
+            right: 0;
+            top: 32px;
+            background-color: rgb(218, 213, 169);
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            min-width: 180px;
+            display: none;
+            z-index: 2000;
+        }
+
+        .menu-list li a {
+            display: block;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .menu-list li a:hover {
+            background-color: #eee;
+        }
+
+        .menu-list--open {
+            display: block;
+        }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #ffd54f;
+            outline-offset: 3px;
+        }
+        main{
+            display:block;
+        }
+        .naglowek{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 120px;
+            text-align: left;
+        }
+        .naglowek h1{
+            margin:0;
+        }
+        .kocie1{
+            transition: transform 0.4s ease;
+            width: 480px;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 50% / 35%;
+        }
+        .kocie1:hover {
+            transform: scale(1.1);
+        }
+
+        .welcome {
+            width: 100%;
+            padding: 80px 120px;
+            box-sizing: border-box;
+            text-align: center;
+            color: #4a371f;
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        .slider-section{
+            padding: 40px 120px 60px;
+            box-sizing:border-box;
+        }
+
+        .slider-section h2{
+            font-size: 32px;
+            margin: 0 0 25px 0;
+            color:#4a371f;
+            text-align:center;
+        }
+
+        .slider-wrapper{
+            position:relative;
+            max-width: 900px;
+            margin:0 auto;
+            overflow:hidden;
+            border-radius:20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            background:#000;
+        }
+
+        .slider-track{
+            display:flex;
+            transition:transform 0.6s ease;
+        }
+
+        .slide{
+            min-width:100%;
+            position:relative;
+        }
+
+        .slide img{
+            width:100%;
+            display:block;
+            max-height:420px;
+            object-fit:cover;
+        }
+
+        .slide-caption{
+            position:absolute;
+            left:20px;
+            bottom:20px;
+            background:rgba(74,55,31,0.7);
+            color:#fdf5e6;
+            padding:10px 16px;
+            border-radius:14px;
+            font-size:16px;
+        }
+
+        .slider-btn{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            background:rgba(0,0,0,0.45);
+            color:#fff;
+            border:none;
+            border-radius:50%;
+            width:38px;
+            height:38px;
+            cursor:pointer;
+            font-size:18px;
+        }
+
+        .slider-btn--prev{
+            left:12px;
+        }
+
+        .slider-btn--next{
+            right:12px;
+        }
+
+        .slider-btn:focus-visible{
+            outline:3px solid #ffd54f;
+            outline-offset:3px;
+        }
+
+        .sekcja-dol {
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+            gap:40px;
+            padding:60px 120px 80px;
+            box-sizing: border-box;
+        }
+
+        .sekcja-dol img {
+            width:420px;
+            border-radius:10px;
+            object-fit:cover;
+        }
+
+        .opis-karta {
+            background:#8a5f45;
+            color:white;
+            padding:35px 45px;
+            border-radius:20px;
+            max-width:520px;
+            line-height:1.6;
+        }
+
+        footer {
+            width:100%;
+            text-align:center;
+            padding:5px;
+            font-size:12px;
+            background-color: azure;
+            color:#4a371f;
+            opacity:0.6;
+        }
+
+        @media (max-width: 900px){
+            .naglowek,
+            .sekcja-dol{
+                flex-direction:column;
+                padding:40px 20px;
+            }
+            .welcome{
+                padding:40px 20px;
+            }
+            .naglowek h1{
+                margin-bottom:20px;
+            }
+            .slider-section{
+                padding:30px 20px 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+<header class="topbar">
+    <div class="brand">Kocia Łapka</div>
+
+    <nav aria-label="Główna nawigacja">
+        <button class="menu-btn"
+                id="menuToggle"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="mainMenu">
+            MENU ▼
+        </button>
+
+        <ul class="menu-list" id="mainMenu">
+            <li><a href="main strona.html" aria-current="page">Strona główna</a></li>
+            <li><a href="uslugi.html">Usługi</a></li>
+            <li><a href="opinie.html">Opinie</a></li>
+            <li><a href="kontakt1.html">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main">
+    <section class="naglowek" aria-labelledby="main-heading">
+        <h1 id="main-heading">Księgarnia Kocia Łapka</h1>
+        <img class="kocie1" src="IMG/koci1,5.png" alt="Wejście do księgarni Kocia Łapka z kotami przed drzwiami">
+    </section>
+
+    <section class="welcome">
+        <p><strong>Witamy w miejscu, gdzie książki spotykają się z mruczeniem.</strong></p>
+        <p>Kocia Łapka to przestrzeń tworzona z miłości do literatury oraz niezwykłego ciepła, jakie potrafią wnieść koty. Wędrując po naszej księgarni, możesz natknąć się na futrzanego towarzysza, który chętnie dotrzyma Ci towarzystwa podczas czytania lub przysiądzie obok na miękkim fotelu.</p>
+        <p>Wierzymy, że dobre historie najlepiej smakują wtedy, gdy są czytane w przyjaznym, spokojnym otoczeniu. Dlatego stworzyliśmy miejsce, które otula atmosferą, zachęca do zanurzenia się w lekturze i pozwala na chwilę oddechu od codzienności.</p>
+    </section>
+
+    <section class="slider-section" aria-labelledby="slider-heading">
+        <h2 id="slider-heading">Zajrzyj do Kociej Łapki</h2>
+
+        <div class="slider-wrapper" role="region" aria-label="Galeria zdjęć księgarni">
+            <div class="slider-track" id="sliderTrack">
+                <figure class="slide" aria-hidden="false">
+                    <img src="IMG/ChatGPT Image 19 lis 2025, 23_58_16.png" alt="Wejście do księgarni z szyldem Kocia Łapka">
+                    <figcaption class="slide-caption">Wejście do księgarni</figcaption>
+                </figure>
+
+                <figure class="slide" aria-hidden="true">
+                    <img src="IMG/koci 2.png" alt="Czytelnicy siedzący w fotelach wśród kotów">
+                    <figcaption class="slide-caption">Czytanie wśród kotów</figcaption>
+                </figure>
+
+                <figure class="slide" aria-hidden="true">
+                    <img src="IMG/ChatGPT Image 20 lis 2025, 00_21_43.png" alt="Wnętrze księgarni przy ladzie z obsługą">
+                    <figcaption class="slide-caption">Przytulne wnętrze księgarni</figcaption>
+                </figure>
+            </div>
+
+            <button class="slider-btn slider-btn--prev" id="prevSlide" type="button" aria-label="Poprzednie zdjęcie">
+                ‹
+            </button>
+            <button class="slider-btn slider-btn--next" id="nextSlide" type="button" aria-label="Następne zdjęcie">
+                ›
+            </button>
+        </div>
+    </section>
+
+    <section class="sekcja-dol" aria-labelledby="about-heading">
+        <img src="IMG/koci 2.png" alt="Wnętrze księgarni z osobami czytającymi wśród kotów">
+
+        <div class="opis-karta">
+            <h2 id="about-heading" style="margin-top:0; font-size:36px;">Kocia Łapka</h2>
+            <p>🐾 <strong>Kocia Łapka – Księgarnia z Mruczącymi Towarzyszami</strong></p>
+            <p>"Kocia Łapka" to niezwykłe miejsce, które łączy miłość do książek z obecnością kotów. To raj dla bibliofilów i kociarzy, gdzie możesz czytać i odpoczywać w towarzystwie uroczych, mruczących rezydentów.</p>
+            <p>W "Kociej Łapce" znajdziesz regały pełne interesujących tytułów, a jednocześnie poczujesz się jak w przytulnej kawiarni lub kocim azylu. To idealne miejsce, aby w spokoju przejrzeć nowości literackie, napić się herbaty i głaskać koty w tle, ciesząc się ich terapeutyczną obecnością.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    illia novak
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('mainMenu');
+
+    menuBtn.addEventListener('click', function () {
+        const isOpen = menu.classList.toggle('menu-list--open');
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    menu.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            menu.classList.remove('menu-list--open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.focus();
+        }
+    });
+
+    // SLIDER
+    const track = document.getElementById('sliderTrack');
+    const slides = Array.from(track.querySelectorAll('.slide'));
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    let currentIndex = 0;
+
+    function showSlide(index){
+        if(index < 0){
+            index = slides.length - 1;
+        } else if(index >= slides.length){
+            index = 0;
+        }
+        currentIndex = index;
+        const offset = -index * 100;
+        track.style.transform = 'translateX(' + offset + '%)';
+
+        slides.forEach((slide, i) => {
+            slide.setAttribute('aria-hidden', i !== currentIndex ? 'true' : 'false');
+        });
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+    document.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowLeft'){
+            showSlide(currentIndex - 1);
+        } else if(e.key === 'ArrowRight'){
+            showSlide(currentIndex + 1);
+        }
+    });
+
+    showSlide(0);
+</script>
+
+</body>
+</html>

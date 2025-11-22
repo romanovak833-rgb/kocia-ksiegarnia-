@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <title>Kocia Łapka – Opinie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background-color: rgb(218, 213, 169);
+            font-family: Georgia, serif;
+            color:#3b2a18;
+        }
+
+        .skip-link{
+            position:absolute;
+            left:-9999px;
+            top:auto;
+            width:1px;
+            height:1px;
+            overflow:hidden;
+        }
+        .skip-link:focus{
+            position:static;
+            width:auto;
+            height:auto;
+            padding:8px 12px;
+            background:#ffd54f;
+            color:#000;
+            z-index:1000;
+        }
+
+        .topbar {
+            background-color: #4a371f;
+            color: rgb(218, 213, 169);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 25px;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: none;
+            border: 2px solid rgb(218, 213, 169);
+            border-radius: 6px;
+            color: rgb(218, 213, 169);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding: 8px 0;
+            position: absolute;
+            right: 0;
+            top: 32px;
+            background-color: rgb(160, 145, 145);
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            min-width: 180px;
+            display: none;
+        }
+
+        .menu-list li a {
+            display: block;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .menu-list li a:hover {
+            background-color: #eee;
+        }
+
+        .menu-list--open {
+            display: block;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #ffd54f;
+            outline-offset: 3px;
+        }
+
+        main{
+            display:block;
+        }
+
+        .opinie-wrapper{
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+            gap:60px;
+            padding:60px 120px 80px;
+            box-sizing:border-box;
+        }
+
+        .opinie-photo{
+            width:420px;
+            height:auto;
+            border-radius:10px;
+            object-fit:cover;
+        }
+
+        .opinie-content{
+            flex:1;
+        }
+
+        .opinie-title{
+            font-size:48px;
+            color:#8a5f45;
+            margin:0 0 40px 0;
+            text-align:left;
+        }
+
+        .opinia-card{
+            background:#d7d7b4;
+            border-radius:25px;
+            padding:25px 30px;
+            margin-bottom:25px;
+            max-width:520px;
+            box-sizing:border-box;
+        }
+
+        .opinia-tekst{
+            margin:0 0 15px 0;
+            font-size:16px;
+            line-height:1.6;
+            color:#3b2a18;
+        }
+
+        .opinia-autor{
+            font-size:18px;
+            font-weight:bold;
+            color:#4a371f;
+        }
+
+        .opinia-gwiazdki{
+            margin-left:10px;
+            color:#d4a017;
+            font-size:18px;
+        }
+
+        footer {
+            width:100%;
+            text-align:center;
+            padding:5px;
+            font-size:12px;
+            background-color: azure;
+            color:#4a371f;
+            opacity:0.6;
+        }
+
+        @media (max-width: 900px){
+            .opinie-wrapper{
+                flex-direction:column;
+                padding:40px 20px 60px;
+            }
+            .opinie-title{
+                text-align:center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+<header class="topbar">
+    <div class="brand">Kocia Łapka</div>
+
+    <nav aria-label="Główna nawigacja">
+        <button class="menu-btn"
+                id="menuToggle"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="mainMenu">
+            MENU ▼
+        </button>
+
+        <ul class="menu-list" id="mainMenu">
+            <li><a href="main strona.html">Strona główna</a></li>
+            <li><a href="uslugi.html">Usługi</a></li>
+            <li><a href="opinie.html" aria-current="page">Opinie</a></li>
+            <li><a href="kontakt1.html">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main">
+    <section class="opinie-wrapper" aria-labelledby="opinie-heading">
+        <img class="opinie-photo"
+             src="IMG/ChatGPT Image 19 lis 2025, 23_37_33.png"
+             alt="Grupa uśmiechniętych klientów w księgarni Kocia Łapka w otoczeniu kotów">
+
+        <div class="opinie-content">
+            <h1 id="opinie-heading" class="opinie-title">Wstępne opinie</h1>
+
+            <article class="opinia-card">
+                <p class="opinia-tekst">
+                    „Rekomendacje są niesamowite! W końcu trafiłam na książkę, której szukałam od dawna – algorytm działa
+                    lepiej niż moi znajomi.”
+                </p>
+                <p class="opinia-autor">
+                    Kasia L.
+                    <span class="opinia-gwiazdki" aria-hidden="true">★★★★★</span>
+                    <span class="visually-hidden">Ocena 5 na 5 gwiazdek</span>
+                </p>
+            </article>
+
+            <article class="opinia-card">
+                <p class="opinia-tekst">
+                    „Aplikacja jest super intuicyjna, a opcja odbioru w księgarni zajęła mi dosłownie minutę. Pełen komfort zakupów.”
+                </p>
+                <p class="opinia-autor">
+                    Piotr G.
+                    <span class="opinia-gwiazdki" aria-hidden="true">★★★★★</span>
+                    <span class="visually-hidden">Ocena 5 na 5 gwiazdek</span>
+                </p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    illia novak
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('mainMenu');
+
+    menuBtn.addEventListener('click', function () {
+        const isOpen = menu.classList.toggle('menu-list--open');
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    menu.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            menu.classList.remove('menu-list--open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.focus();
+        }
+    });
+</script>
+
+</body>
+</html>

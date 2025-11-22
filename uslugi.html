@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <title>Kocia Łapka – Usługi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background-color: rgb(218, 213, 169);
+            font-family: Georgia, serif;
+            color:#3b2a18;
+        }
+
+        .skip-link{
+            position:absolute;
+            left:-9999px;
+            top:auto;
+            width:1px;
+            height:1px;
+            overflow:hidden;
+        }
+        .skip-link:focus{
+            position:static;
+            width:auto;
+            height:auto;
+            padding:8px 12px;
+            background:#ffd54f;
+            color:#000;
+            z-index:1000;
+        }
+
+        .topbar {
+            background-color: #4a371f;
+            color: rgb(218, 213, 169);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 25px;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: none;
+            border: 2px solid rgb(218, 213, 169);
+            border-radius: 6px;
+            color: rgb(218, 213, 169);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding: 8px 0;
+            position: absolute;
+            right: 0;
+            top: 32px;
+            background-color: rgb(160, 145, 145);
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            min-width: 180px;
+            display: none;
+        }
+
+        .menu-list li a {
+            display: block;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .menu-list li a:hover {
+            background-color: #eee;
+        }
+
+        .menu-list--open {
+            display: block;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #ffd54f;
+            outline-offset: 3px;
+        }
+
+        main{
+            display:block;
+        }
+
+        .naglowek{
+            padding:50px 100px;
+        }
+
+        .naglowek h1{
+            font-size:48px;
+            margin:0 0 40px 0;
+            color:#4a371f;
+        }
+
+        .sekcja-uslugi{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:40px;
+            padding:0 100px 80px;
+            box-sizing:border-box;
+        }
+
+        .lista-uslug{
+            display:flex;
+            flex-direction:column;
+            gap:25px;
+            width:50%;
+        }
+
+        .usluga{
+            background:#d7d7b4;
+            padding:20px 25px;
+            border-radius:12px;
+            display:flex;
+            flex-direction:column;
+            gap:5px;
+        }
+
+        .usluga h3{
+            margin:0;
+            font-size:24px;
+            color:#4a371f;
+        }
+
+        .usluga p{
+            margin:0;
+            font-size:16px;
+            color:#3b2a18;
+        }
+
+        .zdjecie-uslugi{
+            width:420px;
+            height:320px;
+            background:#ccc;
+            border-radius:40px;
+            object-fit:cover;
+        }
+
+        footer {
+            width:100%;
+            text-align:center;
+            padding:5px;
+            font-size:12px;
+            background-color: azure;
+            color:#4a371f;
+            opacity:0.6;
+        }
+
+        @media (max-width: 900px){
+            .naglowek{
+                padding:40px 20px 20px;
+            }
+            .sekcja-uslugi{
+                flex-direction:column;
+                padding:0 20px 60px;
+            }
+            .lista-uslug{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+<header class="topbar">
+    <div class="brand">Kocia Łapka</div>
+
+    <nav aria-label="Główna nawigacja">
+        <button class="menu-btn"
+                id="menuToggle"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="mainMenu">
+            MENU ▼
+        </button>
+
+        <ul class="menu-list" id="mainMenu">
+            <li><a href="main strona.html">Strona główna</a></li>
+            <li><a href="uslugi.html" aria-current="page">Usługi</a></li>
+            <li><a href="opinie.html">Opinie</a></li>
+            <li><a href="kontakt1.html">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main">
+    <section class="naglowek" aria-labelledby="services-heading">
+        <h1 id="services-heading">Usługi</h1>
+    </section>
+
+    <section class="sekcja-uslugi">
+        <div class="lista-uslug">
+            <article class="usluga">
+                <h3>Szybkie Zamawianie i Odbiór</h3>
+                <p>Zamawiaj szybko w aplikacji i wybieraj spośród wielu opcji dostawy, włącznie z natychmiastowym odbiorem w księgarni.</p>
+            </article>
+
+            <article class="usluga">
+                <h3>Spersonalizowane Rekomendacje</h3>
+                <p>Otrzymuj trafne propozycje książek dopasowane do Twoich ulubionych gatunków oraz historii czytelniczej.</p>
+            </article>
+
+            <article class="usluga">
+                <h3>Prenumerata Czytelnicza</h3>
+                <p>Co miesiąc niespodzianka — książka i tematyczne gadżety wybrane specjalnie dla Ciebie.</p>
+            </article>
+        </div>
+
+        <img class="zdjecie-uslugi" src="IMG/koci1,5.png" alt="Pracowniczka księgarni podająca książkę klientowi, obok przechadza się kot">
+    </section>
+</main>
+
+<footer>
+    illia novak
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('mainMenu');
+
+    menuBtn.addEventListener('click', function () {
+        const isOpen = menu.classList.toggle('menu-list--open');
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    menu.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            menu.classList.remove('menu-list--open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.focus();
+        }
+    });
+</script>
+
+</body>
+</html>
